@@ -76,37 +76,34 @@ function preCombate(jogador) {
     return ordemDeCombate;
 }
 
-//Combate
 function combate() {
-    iniciarCombate.addEventListener('click', () => {
-        iniciarCombate.classList.add('vanish');
-        let personagem;
-        let agressor;
-        let alvo;
-        
+    iniciarCombate.classList.add('vanish');
+    let personagem;
+    let agressor;
+    let alvo;
+    
+    while(true) {
+        personagem = preCombate(jogador);
+        agressor = 2;
+        alvo = 3;
+
         while(true) {
-            personagem = preCombate(jogador);
-            agressor = 2;
-            alvo = 3;
-
-            while(true) {
-                console.log(personagem[agressor%2].nome + " está atacando o " +  personagem[alvo%2].nome);
-                personagem[agressor%2].atacar(personagem[alvo%2], personagem[alvo%2].modificadorDeAcerto);
-        
-                if(!(isAlvoVivo(personagem[alvo%2]))) {                    
-                    console.log(personagem[alvo%2].nome + " morreu.");
-                    break;
-                }
-                
-                agressor++;
-                alvo++;
-            }
-
-            if(!(isAlvoVivo(jogador))) {
-                gameOutput.innerText = ('Game Over');
-                guiGameOver();
+            console.log(personagem[agressor%2].nome + " está atacando o " +  personagem[alvo%2].nome);
+            personagem[agressor%2].atacar(personagem[alvo%2], personagem[alvo%2].modificadorDeAcerto);
+    
+            if(!(isAlvoVivo(personagem[alvo%2]))) {                    
+                console.log(personagem[alvo%2].nome + " morreu.");
                 break;
             }
+            
+            agressor++;
+            alvo++;
         }
-    });
+
+        if(!(isAlvoVivo(jogador))) {
+            gameOutput.innerText = ('Game Over');
+            guiGameOver();
+            break;
+        }
+    }
 }

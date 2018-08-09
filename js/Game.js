@@ -6,10 +6,3 @@ const newGame = document.getElementById('new-game'),
       confirmaNome = document.getElementById('confirma-nome'),
       iniciarCombate = document.getElementById('iniciar-combate'),
       jogador = new Personagem('', 'guerreiro', 10, 10, 10, 'medio', espadaLonga);
-
-newGame.addEventListener('click', () => {
-
-    guiEscolherNome();
-    criarJogador();
-    combate();
-});

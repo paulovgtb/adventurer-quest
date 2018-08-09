@@ -1,4 +1,18 @@
 
+//Cria a ficha do jogador
+function criarJogador() {
+    if(!(validarNome(gameInput.value))) {
+        gameInput.value = '';
+        gameInput.focus();
+        return false;
+    }
+
+    jogador.nome = gameInput.value;
+    guiRolarAtributos();
+    distribuirAtributos();
+    guiPreCombate();
+}
+
 //Calcula a vida inicial do personagem
 function calcularVida(classe, modificadorDeConstituicao, quantidadeDeDadosDeVida, tipoDeDadoDeVida, modificadorDeVida) {
     switch(classe) {
