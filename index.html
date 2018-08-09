@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Adventurer Quest</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/page/index.css">
+    </head>
+    <body>
+        <header class="container">
+            <h1 class="titulo-principal">Adventurer Quest</h1>
+        </header>
+        <main class="container">
+            <div class="game-window">
+                <p class="game-output" id="game-output">Comece sua aventura!</p>
+                <input class="game-input vanish" type="text" name="game-input" id="game-input">
+            </div>
+            <div class="button-window">
+                <button class="game-buttons" id="new-game">Novo jogo</button>
+                <button class="game-buttons vanish" id="continue">Continuar</button>
+                <button class="game-buttons vanish" id="confirma-nome">Confirmar</button>
+                <button class="game-buttons vanish" id="iniciar-combate">Combate</button>
+            </div>
+            <!-- <div class="error-window" id="error-window">
+                <p class="" id="error-output"></p>
+            </div> -->
+        </main>
+        <script src="js/Personagem.js"></script>
+        <script src="js/Arma.js"></script>
+        <script src="js/Monstro.js"></script>
+        <script src="js/utils/Geral.js"></script>
+        <script src="js/utils/Combate.js"></script>
+        <script src="js/utils/CriarFicha.js"></script>
+        <script src="js/utils/Arsenal.js"></script>
+        <script src="js/utils/Bestiario.js"></script>
+        <script src="js/utils/GameFunctions.js"></script>
+        <script src="js/helpers/GuiController.js"></script>
+        <script src="js/Game.js"></script>
+    </body>
+</html>
