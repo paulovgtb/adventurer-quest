@@ -20,3 +20,10 @@ function guiPreCombate() {
 function guiGameOver() {
     newGame.classList.remove('vanish');
 }
+
+function displayAtributos(nome, forca, destreza, constituicao) {
+    gameOutput.innerText = (nome + ":");
+    gameOutput.innerText += ("\nForça: " + forca);
+    gameOutput.innerText += ("\nDestreza: " + destreza);
+    gameOutput.innerText += ("\nConstituição: " + constituicao);
+}

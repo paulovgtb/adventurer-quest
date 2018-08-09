@@ -1,15 +1,21 @@
 
 //Cria a ficha do jogador
 function criarJogador() {
+    let nome, 
+        forca = rolarAtributo(),
+        destreza = rolarAtributo(),
+        constituicao = rolarAtributo();
+
     if(!(validarNome(gameInput.value))) {
         gameInput.value = '';
         gameInput.focus();
         return false;
     }
 
-    jogador.nome = gameInput.value;
+    nome = gameInput.value;
     guiRolarAtributos();
-    distribuirAtributos();
+    displayAtributos(nome, forca, destreza, constituicao);
+    jogador = new Personagem(nome, 'guerreiro', forca, destreza, constituicao, 'medio', espadaLonga);
     guiPreCombate();
 }
 
@@ -47,20 +53,6 @@ function rolarAtributo() {
     })
 
     return atributo;
-}
-
-//Rola os atributos do jogador
-function distribuirAtributos() {
-        gameOutput.innerText = (jogador.nome + ":");
-        jogador.forca = rolarAtributo();
-        jogador.atualizarModificador('forca', jogador.forca);
-        gameOutput.innerText += ("\nForça: " + jogador.forca);
-        jogador.destreza = rolarAtributo();
-        jogador.atualizarModificador('destreza', jogador.destreza);
-        gameOutput.innerText += ("\nDestreza: " + jogador.destreza);
-        jogador.constituicao = rolarAtributo();
-        jogador.atualizarModificador('constituicao', jogador.constituicao);
-        gameOutput.innerText += ("\nConstituição: " + jogador.constituicao);
 }
 
 //Calcula o modificador dos atributos
