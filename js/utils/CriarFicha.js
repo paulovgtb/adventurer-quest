@@ -36,7 +36,7 @@ function rolarAtributo() {
 }
 
 //Rola os atributos do jogador
- function distribuirAtributos() {
+function distribuirAtributos() {
         gameOutput.innerText = (jogador.nome + ":");
         jogador.forca = rolarAtributo();
         jogador.atualizarModificador('forca', jogador.forca);

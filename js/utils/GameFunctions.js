@@ -10,7 +10,6 @@ function criarJogador() {
         }
 
         guiRolarAtributos();
-
         distribuirAtributos();
         
         console.log(jogador);
