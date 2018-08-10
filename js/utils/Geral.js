@@ -23,3 +23,7 @@ function validarNome(nome) {
     
     return true;
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
