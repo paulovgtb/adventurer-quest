@@ -1,0 +1,7 @@
+Fazer com que rolar dado receba "xdx" (Ex: 2d6) como parametro;
+Fazer uma animação na hora de rolar o dado que faça com que vários números aleatórios apareçam até que o número certo seja selecionado;
+Criar a posibilidade de escolher classes;
+Criar mais monstros;
+Adicionar um sistema de nível;
+Adicionar um ranking;
+Aprender a usar factory pra melhorar o desempenho;
