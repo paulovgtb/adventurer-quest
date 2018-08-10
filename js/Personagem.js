@@ -36,13 +36,14 @@ class Personagem {
         let modificadorDeHabilidade = 0;
         let acertoEhCritico = 1;
         let d20 = rolarDado(20);
-        console.log('d20: ' + d20);
 
         if(d20 === 20) {
             acertoEhCritico = 2;
+            displayAtaque(this, alvo, true);
             causarDano(this, alvo, acertoEhCritico);
             return true;
         } else if(d20 === 1) {
+            displayAtaque(this, alvo, false);
             return false;
         } else {
             switch(this.arma.alcance) {
@@ -55,13 +56,16 @@ class Personagem {
             }
             console.log('MdH: ' + modificadorDeHabilidade);
             console.log('AlvoCA: ' + alvo.classeDeArmadura);
-            console.log('this: ' + this);
-            console.log('Alvo: ' + alvo);
+            console.log('this: ' + this.nome);
+            console.log('Alvo: ' + alvo.nome);
             console.log('MdAcerto: ' + modificadorDeAcerto || 0);
+            console.log(alvo.nome + ' Dano Sofrido: ' + alvo.danoSofrido);
             if(d20 + modificadorDeHabilidade + (modificadorDeAcerto || 0) >= alvo.classeDeArmadura) {
+                displayAtaque(this, alvo, true);
                 causarDano(this, alvo, acertoEhCritico);
                 return true;
             } else {
+                displayAtaque(this, alvo, false);
                 return false;
             }
         }

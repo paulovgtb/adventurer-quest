@@ -1,7 +1,8 @@
 
 //Rola o dano causado pelo personagem
-function causarDano(personagem, alvo, acertoEhCritico) {
+async function causarDano(personagem, alvo, acertoEhCritico) {
     let modificadorDeHabilidade = 0;
+    let dano;
     let dados = 0;
 
     switch(personagem.arma.alcance) {
@@ -17,7 +18,10 @@ function causarDano(personagem, alvo, acertoEhCritico) {
         dados += rolarDado(personagem.arma.tipoDeDadoDeAtaque);
     }
 
-    alvo.danoSofrido += (dados + modificadorDeHabilidade) * acertoEhCritico;
+    dano = (dados + modificadorDeHabilidade) * acertoEhCritico;
+    await sleep(1000);
+    displayDano(personagem, alvo, dano);
+    alvo.danoSofrido += dano;
 }
 
 //Calcula a iniciativa do personagem
@@ -56,6 +60,15 @@ function isAlvoVivo(alvo) {
     return false;
 }
 
+//Confere se o alvo é o jogador
+function isAlvoJogador(alvo) {
+    if(alvo.nome == jogador.nome) {
+        return true;
+    }
+
+    return false;
+}
+
 //Prepara para o combate
 function preCombate(jogador) {
     let monstro = sorteiaMonstro();
@@ -76,11 +89,12 @@ function preCombate(jogador) {
     return ordemDeCombate;
 }
 
-function combate() {
+async function combate() {
     iniciarCombate.classList.add('vanish');
     let personagem;
     let agressor;
     let alvo;
+    let isJogadorVivo = true;
     
     while(true) {
         personagem = preCombate(jogador);
@@ -88,11 +102,18 @@ function combate() {
         alvo = 3;
 
         while(true) {
-            console.log(personagem[agressor%2].nome + " está atacando o " +  personagem[alvo%2].nome);
             personagem[agressor%2].atacar(personagem[alvo%2], personagem[alvo%2].modificadorDeAcerto);
+            await sleep(2000);
     
             if(!(isAlvoVivo(personagem[alvo%2]))) {                    
                 console.log(personagem[alvo%2].nome + " morreu.");
+                if(!(isAlvoJogador(personagem[alvo%2]))) {
+                    personagem[alvo%2].danoSofrido = 0;
+                } else {
+                    isJogadorVivo = false;
+                    personagem[agressor%2].danoSofrido = 0;
+                }
+
                 break;
             }
             
@@ -100,7 +121,7 @@ function combate() {
             alvo++;
         }
 
-        if(!(isAlvoVivo(jogador))) {
+        if(!isJogadorVivo) {
             gameOutput.innerText = ('Game Over');
             guiGameOver();
             break;
