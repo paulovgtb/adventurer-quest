@@ -17,7 +17,14 @@ function guiPreCombate() {
     iniciarCombate.classList.remove('vanish');
 }
 
+function guiCombate() {
+    atualizaVida();
+    iniciarCombate.classList.add('vanish');
+    healthBar.classList.remove('vanish');
+}
+
 function guiGameOver() {
+    healthBar.classList.add('vanish');
     newGame.classList.remove('vanish');
 }
 

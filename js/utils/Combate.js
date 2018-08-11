@@ -22,6 +22,7 @@ async function causarDano(personagem, alvo, acertoEhCritico) {
     await sleep(1000);
     displayDano(personagem, alvo, dano);
     alvo.danoSofrido += dano;
+    atualizaVida();
 }
 
 //Calcula a iniciativa do personagem
@@ -90,7 +91,7 @@ function preCombate(jogador) {
 }
 
 async function combate() {
-    iniciarCombate.classList.add('vanish');
+    guiCombate();
     let personagem;
     let agressor;
     let alvo;

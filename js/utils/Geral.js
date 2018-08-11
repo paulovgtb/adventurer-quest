@@ -27,3 +27,7 @@ function validarNome(nome) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+function atualizaVida() {
+    healthBar.innerText = jogador.vida - jogador.danoSofrido;
+}
