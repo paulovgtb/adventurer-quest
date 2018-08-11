@@ -104,12 +104,12 @@ async function combate() {
 
         while(true) {
             personagem[agressor%2].atacar(personagem[alvo%2], personagem[alvo%2].modificadorDeAcerto);
-            await sleep(2000);
     
             if(!(isAlvoVivo(personagem[alvo%2]))) {                    
                 console.log(personagem[alvo%2].nome + " morreu.");
                 if(!(isAlvoJogador(personagem[alvo%2]))) {
                     personagem[alvo%2].danoSofrido = 0;
+                    jogador.experiencia += personagem[alvo%2].experiencia;
                 } else {
                     isJogadorVivo = false;
                     personagem[agressor%2].danoSofrido = 0;
@@ -120,10 +120,10 @@ async function combate() {
             
             agressor++;
             alvo++;
+            await sleep(2000);
         }
 
         if(!isJogadorVivo) {
-            gameOutput.innerText = ('Game Over');
             guiGameOver();
             break;
         }

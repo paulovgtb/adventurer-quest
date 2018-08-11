@@ -24,6 +24,7 @@ function guiCombate() {
 }
 
 function guiGameOver() {
+    gameOutput.innerText = ('Game Over');
     healthBar.classList.add('vanish');
     newGame.classList.remove('vanish');
 }
