@@ -5,3 +5,4 @@ Criar mais monstros;
 Adicionar um sistema de nível;
 Adicionar um ranking;
 Aprender a usar factory pra melhorar o desempenho;
+Dar a possibilidade de um personagem ter mais de 1 ataque e escolher qual usar;
